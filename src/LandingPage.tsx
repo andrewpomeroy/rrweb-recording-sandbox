@@ -33,7 +33,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="flex-1 flex justify-center bg-slate-400 overflow-y-auto">
+    <div className="flex-1 flex justify-center bg-slate-100 overflow-y-auto">
       <div className="max-w-[1280px] p-12 text-left">
         <div className="flex justify-between">
           <div>
@@ -41,7 +41,7 @@ const LandingPage = () => {
           </div>
           <div className="flex space-x-2">
             <DropdownMenu>
-              <DropdownMenuTrigger>
+              <DropdownMenuTrigger asChild>
                 <Button>Dropdown menu</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
@@ -85,17 +85,10 @@ const LandingPage = () => {
             aliqua amet pariatur.
           </p>
           <div className="flex space-x-4">
-            <Button
-              // className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => handleIncrement(counter1)}
-            >
+            <Button onClick={() => handleIncrement(counter1)}>
               Counter (count: {counter1.count})
             </Button>
-            <Button
-              // className="bg-gray-500 text-white font-bold py-2 px-4 rounded"
-              onClick={() => handleIncrement(counter2)}
-              disabled
-            >
+            <Button onClick={() => handleIncrement(counter2)} disabled>
               Disabled counter (count: {counter2.count})
             </Button>
           </div>
