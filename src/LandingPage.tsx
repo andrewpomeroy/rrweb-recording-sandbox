@@ -1,5 +1,5 @@
 // LandingPage.tsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 import {
   DropdownMenu,
@@ -8,7 +8,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 interface Counter {
   count: number;
@@ -27,12 +28,12 @@ const LandingPage = () => {
         setCounter2({ count: counter.count + 1 });
         break;
       default:
-        console.error('Unknown counter');
+        console.error("Unknown counter");
     }
   };
 
   return (
-    <div className="min-h-screen w-full flex bg-gray-200">
+    <div className="flex-1 flex justify-center bg-slate-400 overflow-y-auto">
       <div className="max-w-[1280px] p-12 text-left">
         <div className="flex justify-between">
           <div>
@@ -40,7 +41,9 @@ const LandingPage = () => {
           </div>
           <div className="flex space-x-2">
             <DropdownMenu>
-              <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+              <DropdownMenuTrigger>
+                <Button>Dropdown menu</Button>
+              </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
@@ -82,19 +85,19 @@ const LandingPage = () => {
             aliqua amet pariatur.
           </p>
           <div className="flex space-x-4">
-            <button
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            <Button
+              // className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
               onClick={() => handleIncrement(counter1)}
             >
               Counter (count: {counter1.count})
-            </button>
-            <button
-              className="bg-gray-500 text-white font-bold py-2 px-4 rounded"
+            </Button>
+            <Button
+              // className="bg-gray-500 text-white font-bold py-2 px-4 rounded"
               onClick={() => handleIncrement(counter2)}
               disabled
             >
               Disabled counter (count: {counter2.count})
-            </button>
+            </Button>
           </div>
         </div>
 
