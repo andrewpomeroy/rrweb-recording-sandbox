@@ -1,4 +1,3 @@
-import { useState } from "react";
 import LandingPage from "./LandingPage";
 import RecordingControls from "@/RecordingControls";
 

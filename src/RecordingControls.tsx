@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import type { eventWithTime } from "@rrweb/types";
-import { useCallback, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { record } from "rrweb";
 
 function RecordingControls() {
@@ -8,7 +8,6 @@ function RecordingControls() {
   // const [stopCallback, setStopCallback] = useState<() => void>(() => {});
   const stopRecording = useRef<() => void>(() => {});
   const [events, setEvents] = useState<eventWithTime[]>([]);
-  const [isPlaying, setIsPlaying] = useState(false);
   const recordingEvents = useRef<eventWithTime[]>([]);
 
   const getRecordingLength = (events: eventWithTime[]) => {
