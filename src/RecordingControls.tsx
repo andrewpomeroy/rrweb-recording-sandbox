@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import type { eventWithTime } from "@rrweb/types";
+import { CopyIcon, DownloadIcon, TrashIcon } from "lucide-react";
 import { useRef, useState } from "react";
 import { record } from "rrweb";
+import { toast } from "sonner";
 
 function RecordingControls() {
   const [isRecording, setIsRecording] = useState(false);
@@ -68,13 +70,49 @@ function RecordingControls() {
       // setStopCallback(stop);
     }
   };
+
+  const handleCopy = () => {
+    console.log(
+      "%c💣️ events",
+      "background: aliceblue; color: dodgerblue; font-weight: bold",
+      events
+    );
+    try {
+      navigator.clipboard.writeText(JSON.stringify(events));
+      toast.success("Recording copied to clipboard", {
+        position: "top-right",
+        // description: "Sunday, December 03, 2023 at 9:00 AM",
+        // action: {
+        //   label: "Undo",
+        //   onClick: () => console.log("Undo"),
+        // },
+      });
+    } catch (error) {
+      console.error("Error copying events to clipboard", error);
+      toast.error("Error copying events to clipboard", {
+        position: "top-right",
+      });
+    }
+  };
+  const handleDownload = () => {
+    console.log(
+      "%c💣️ events",
+      "background: aliceblue; color: dodgerblue; font-weight: bold",
+      events
+    );
+    downloadRecording();
+  };
+  const handleTrash = () => {
+    setEvents([]);
+  };
+
   return (
-    <div className="flex-none flex flex-wrap justify-center gap-4 w-full overflow-hidden bg-slate-400 p-2">
+    <div className="flex-none flex flex-wrap justify-center align-center gap-4 w-full overflow-hidden bg-slate-400 p-2">
       {isRecording && stopRecording.current ? (
         <Button onClick={stopRecording.current}>🛑 Stop recording</Button>
       ) : (
         <Button onClick={startRecording} className="bg-red-900 text-white">
-          {events?.length ? "↪️ Restart recording" : "🔴 Start new recording"}
+          {events?.length ? "↪️ 🔴 Restart" : "🔴 Start new recording"}
         </Button>
       )}
       {/* {!isRecording && events?.length > 0 && (
@@ -92,19 +130,22 @@ function RecordingControls() {
             </Button>
           )} */}
       {!isRecording && events?.length > 1 && (
-        <Button
-          variant="secondary"
-          onClick={() => {
-            console.log(
-              "%c💣️ events",
-              "background: aliceblue; color: dodgerblue; font-weight: bold",
-              events
-            );
-            downloadRecording();
-          }}
-        >
-          Export ({recordingDuration})
-        </Button>
+        <>
+          <div className="px-2 py-1 rounded-sm bg-black/10 flex items-center gap-1">
+            <span className="font-mono text-sm">
+              📼&nbsp;{recordingDuration}
+            </span>
+            <Button size="sm" variant="ghost" className="px-2">
+              <CopyIcon onClick={handleCopy} size={16} />
+            </Button>
+            <Button size="sm" variant="ghost" className="px-2">
+              <DownloadIcon onClick={handleDownload} size={16} />
+            </Button>
+            <Button size="sm" variant="ghost" className="px-2">
+              <TrashIcon onClick={handleTrash} size={16} />
+            </Button>
+          </div>
+        </>
       )}
     </div>
   );
