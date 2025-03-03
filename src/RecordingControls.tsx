@@ -69,17 +69,15 @@ function RecordingControls() {
     }
   };
   return (
-    <div className="flex-none flex flex-col w-full overflow-hidden bg-slate-400 p-2">
-      <div>
-        <div className="space-x-4">
-          {isRecording && stopRecording.current ? (
-            <Button onClick={stopRecording.current}>🛑 Stop recording</Button>
-          ) : (
-            <Button onClick={startRecording} className="bg-red-900 text-white">
-              🔴 Start {events?.length ? "new" : ""} recording
-            </Button>
-          )}
-          {/* {!isRecording && events?.length > 0 && (
+    <div className="flex-none flex flex-wrap justify-center gap-4 w-full overflow-hidden bg-slate-400 p-2">
+      {isRecording && stopRecording.current ? (
+        <Button onClick={stopRecording.current}>🛑 Stop recording</Button>
+      ) : (
+        <Button onClick={startRecording} className="bg-red-900 text-white">
+          {events?.length ? "↪️ Restart recording" : "🔴 Start new recording"}
+        </Button>
+      )}
+      {/* {!isRecording && events?.length > 0 && (
             <Button
               onClick={() => {
                 console.log(
@@ -93,23 +91,21 @@ function RecordingControls() {
               ▶️ Play
             </Button>
           )} */}
-          {!isRecording && events?.length > 1 && (
-            <Button
-              variant="secondary"
-              onClick={() => {
-                console.log(
-                  "%c💣️ events",
-                  "background: aliceblue; color: dodgerblue; font-weight: bold",
-                  events
-                );
-                downloadRecording();
-              }}
-            >
-              Export ({recordingDuration})
-            </Button>
-          )}
-        </div>
-      </div>
+      {!isRecording && events?.length > 1 && (
+        <Button
+          variant="secondary"
+          onClick={() => {
+            console.log(
+              "%c💣️ events",
+              "background: aliceblue; color: dodgerblue; font-weight: bold",
+              events
+            );
+            downloadRecording();
+          }}
+        >
+          Export ({recordingDuration})
+        </Button>
+      )}
     </div>
   );
 }

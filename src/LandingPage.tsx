@@ -35,11 +35,11 @@ const LandingPage = () => {
   return (
     <div className="flex-1 flex justify-center bg-slate-100 overflow-y-auto">
       <div className="max-w-[1280px] p-12 text-left">
-        <div className="flex justify-between">
+        <div className="flex flex-wrap justify-between">
           <div>
             <h1 className="text-3xl font-bold mb-2">Replay test page</h1>
           </div>
-          <div className="flex space-x-2">
+          <div className="flex flex-wrap space-x-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button>Dropdown menu</Button>
@@ -64,7 +64,7 @@ const LandingPage = () => {
             qui. Consectetur exercitation non est ipsum amet tempor. Nulla
             aliquip reprehenderit ipsum sunt duis ea sunt.
           </p>
-          <p>
+          {/* <p>
             Nostrud dolor enim dolor sint qui non irure. In pariatur mollit
             minim nisi proident sint veniam et ad sit. Sunt sunt in ipsum
             commodo quis excepteur consequat velit est. Fugiat occaecat do
@@ -83,8 +83,8 @@ const LandingPage = () => {
             labore consequat veniam consectetur velit incididunt et. Fugiat est
             ad Lorem dolor consequat qui culpa in minim voluptate exercitation
             aliqua amet pariatur.
-          </p>
-          <div className="flex space-x-4">
+          </p> */}
+          <div className="flex flex-wrap gap-4">
             <Button onClick={() => handleIncrement(counter1)}>
               Counter (count: {counter1.count})
             </Button>
